@@ -54,3 +54,8 @@ body{
     background-color:#eee;
     cursor: pointer;
 }
+
+.winner-wrapper{
+    text-align: center;
+    margin-top: 20px;
+}
