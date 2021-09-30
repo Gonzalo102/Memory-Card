@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./style/style.css";
 import blueAmong from "./images/blue.png";
 import brownAmong from "./images/brown.png";
-import greenAmong from "./images/green.jpeg";
+import greenAmong from "./images/green.png";
 import greyAmong from "./images/grey.png";
 import lightblueAmong from "./images/lightblue.png";
 import limeAmong from "./images/Lime.png";
