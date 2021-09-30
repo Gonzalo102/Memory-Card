@@ -1,14 +1,37 @@
 
 import React, { useEffect, useState } from "react";
+import "./style/style.css";
+import blueAmong from "./images/blue.jpeg";
+import brownAmong from "./images/brown.jpeg";
+import greenAmong from "./images/green.jpeg";
+import greyAmong from "./images/grey.png";
+import lightblueAmong from "./images/lightblue.png";
+import limeAmong from "./images/Lime.png";
+import orangeAmong from "./images/orange.png";
+import pinkAmong from "./images/pink.png";
+import whiteAmong from "./images/white.png";
+import whiteSingerAmong from "./images/whitesinger.png";
+import yellowAmong from "./images/yellow.png";
+import redAmong from "./images/red.png";
+
+
 
 function App() {
 
   
   const [items, setItems]=useState([
-    {id:1, name: "cat", clicked: false },
-    {id:2, name: "dog", clicked: false },
-    {id:3, name: "hamster", clicked: false },
-    {id:4, name: "lizard", clicked: false }
+    {id:1, name: "Blue", clicked: false, image: blueAmong },
+    {id:2, name: "Brown", clicked: false, image: brownAmong  },
+    {id:3, name: "Green", clicked: false, image: greenAmong },
+    {id:4, name: "Grey", clicked: false, image: greyAmong },
+    {id:5, name: "Light Blue", clicked: false, image: lightblueAmong },
+    {id:6, name: "Lime", clicked: false, image: limeAmong },
+    {id:7, name: "Orange", clicked: false, image: orangeAmong },
+    {id:8, name: "Pink", clicked: false, image: pinkAmong },
+    {id:9, name: "White", clicked: false, image: whiteAmong },
+    {id:10, name: "White Singer", clicked: false, image: whiteSingerAmong },
+    {id:11, name: "Yellow", clicked: false, image: yellowAmong },
+    {id:12, name: "Red", clicked: false, image: redAmong },
   ])
   
   const [count, setCount]=useState(0)
@@ -65,6 +88,9 @@ function App() {
       } else if(item.id === id) {
         newItems[index].clicked = true
         incrementCount()
+        if (bestScore === 12){
+          console.log('CONGRATULATE WINNER')
+        }
         if (count >= bestScore){
           setBestScore((prevState) => prevState + 1)
         }
@@ -84,15 +110,20 @@ function App() {
 
 
   return (
-    <div>
-      {items.map((item, index) => (
-        <div onClick={()=>{handleShuffle(); handleClicked(item.id)}} key={item.id}>
-          <img></img>
-          <h2> {item.name} </h2>
-        </div>
-      ))}
-      <h1>Current Score - {count}</h1>
-      <h1>Best Score - {bestScore}</h1>
+    <div className="game-container">
+      <div className="scoreboard">
+        <h3>Current Score - {count}</h3>
+        <h3 id="score-divider">||</h3>
+        <h3>Best Score - {bestScore}</h3>
+      </div>
+      <div className="among-container">
+        {items.map((item, index) => (
+          <div className="among-wrapper" onClick={()=>{handleShuffle(); handleClicked(item.id)}} key={item.id}>
+            <img className="among" src={item.image} alt="logo"/>
+            <h3> {item.name} </h3>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
