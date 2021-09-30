@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Memory-Card/static/css/main.34c1921a.chunk.css",
+    "main.js": "/Memory-Card/static/js/main.08b0abc7.chunk.js",
+    "main.js.map": "/Memory-Card/static/js/main.08b0abc7.chunk.js.map",
+    "runtime-main.js": "/Memory-Card/static/js/runtime-main.fbb9a9ba.js",
+    "runtime-main.js.map": "/Memory-Card/static/js/runtime-main.fbb9a9ba.js.map",
+    "static/js/2.d2abfd0c.chunk.js": "/Memory-Card/static/js/2.d2abfd0c.chunk.js",
+    "static/js/2.d2abfd0c.chunk.js.map": "/Memory-Card/static/js/2.d2abfd0c.chunk.js.map",
+    "index.html": "/Memory-Card/index.html",
+    "static/css/main.34c1921a.chunk.css.map": "/Memory-Card/static/css/main.34c1921a.chunk.css.map",
+    "static/js/2.d2abfd0c.chunk.js.LICENSE.txt": "/Memory-Card/static/js/2.d2abfd0c.chunk.js.LICENSE.txt",
+    "static/media/lightblue.92b603c2.png": "/Memory-Card/static/media/lightblue.92b603c2.png",
+    "static/media/whitesinger.f34a30ab.png": "/Memory-Card/static/media/whitesinger.f34a30ab.png",
+    "static/media/yellow.e4fa65e8.png": "/Memory-Card/static/media/yellow.e4fa65e8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fbb9a9ba.js",
+    "static/js/2.d2abfd0c.chunk.js",
+    "static/css/main.34c1921a.chunk.css",
+    "static/js/main.08b0abc7.chunk.js"
+  ]
+}
