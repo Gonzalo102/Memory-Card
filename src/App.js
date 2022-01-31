@@ -12,6 +12,8 @@ import whiteAmong from "./images/white.png";
 import impostorAmong from "./images/impostor.png";
 import yellowAmong from "./images/yellow.png";
 import redAmong from "./images/red.png";
+import Modal from "./Modal";
+import GameOverModal from "./GameOverModal";
 
 function App() {
   const [items, setItems] = useState([
@@ -32,6 +34,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [winner, setWinner] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
   const shuffle = (array) => {
     return [...array].sort(() => Math.random() - 0.5);
@@ -48,29 +52,29 @@ function App() {
 
   const toggleWinner = () => {
     setWinner(!winner);
-    console.log(winner);
   };
 
   const endGame = () => {
-    console.log("the game is over");
+    setGameOver(true);
+    console.log(gameOver);
   };
 
   const resetGame = () => {
     let newItems = [...items];
-    newItems.map((item) => {
+    newItems.forEach((item) => {
       item.clicked = false;
     });
     setItems(newItems);
     setCount(0);
     setWinner(false);
+    setGameOver(false);
   };
 
   const handleClicked = (id) => {
     let newItems = [...items];
-    newItems.map((item) => {
+    newItems.forEach((item) => {
       const index = newItems.findIndex((i) => i.id === id);
       if (item.id === id && item.clicked) {
-        resetGame();
         endGame();
       } else if (item.id === id) {
         newItems[index].clicked = true;
@@ -79,7 +83,6 @@ function App() {
           setBestScore((prevState) => prevState + 1);
         }
         if (count === 11) {
-          console.log("we have a winner");
           toggleWinner();
         }
         setItems(newItems);
@@ -93,34 +96,48 @@ function App() {
   }, [count]);
 
   return (
-    <div className="game-container">
-      <div className="scoreboard">
-        <h3>Current Score: {count}</h3>
-        <h3 id="score-divider">||</h3>
-        <h3>Best Score: {bestScore}</h3>
-      </div>
-      <div className="among-container">
-        {items.map((item, index) => (
-          <div
-            className="among-wrapper"
-            onClick={() => {
-              handleShuffle();
-              handleClicked(item.id);
-            }}
-            key={item.id}
-          >
-            <img className="among" src={item.image} alt="logo" />
-            <h3> {item.name} </h3>
-          </div>
-        ))}
-      </div>
-      {winner && (
-        <div className="winner-wrapper">
-          <h2> Congratulations! You Won! </h2>
-          <button onClick={resetGame}> Play Again </button>
-        </div>
+    <>
+      <Modal
+        open={isModalOpen}
+        closeModal={() => setIsModalOpen(!isModalOpen)}
+      />
+      {gameOver && (
+        <GameOverModal
+          gameOver={gameOver}
+          resetGame={resetGame}
+          score={count}
+          bestScore={bestScore}
+        />
       )}
-    </div>
+      <div className="game-container">
+        <div className="scoreboard">
+          <h3>Current Score: {count}</h3>
+          <h3 id="score-divider">||</h3>
+          <h3>Best Score: {bestScore}</h3>
+        </div>
+        <div className="among-container">
+          {items.map((item, index) => (
+            <div
+              className="among-wrapper"
+              onClick={() => {
+                handleShuffle();
+                handleClicked(item.id);
+              }}
+              key={item.id}
+            >
+              <img className="among" src={item.image} alt="logo" />
+              <h3> {item.name} </h3>
+            </div>
+          ))}
+        </div>
+        {winner && (
+          <div className="winner-wrapper">
+            <h2> Congratulations! You Won! </h2>
+            <button onClick={resetGame}> Play Again </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
